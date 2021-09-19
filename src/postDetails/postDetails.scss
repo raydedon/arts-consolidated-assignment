@@ -1,0 +1,12 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	border-bottom: 1px solid #cccccc;
+	position: relative;
+	padding-top: 10px;
+	cursor: pointer;
+}
+
+.muted {
+	color: #757575;
+}

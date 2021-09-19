@@ -1,0 +1,20 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	& div:last-child {
+		border-bottom: 1px solid #ffffff;
+	}
+	& div:first-child {
+		padding-top: 0;
+	}
+	padding: 20px;
+	border: 1px solid #cccccc;
+}
+
+.emptyContainer {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	height: 100vh;
+	flex-direction: column;
+}

@@ -1,25 +1,34 @@
-import React from 'react'
+import React from 'react';
 import classes from './app.scss';
-import logo from './logo.svg';
+import {ConnectedRouter} from 'connected-react-router';
+import {Provider} from 'react-redux';
+import {Route, Switch} from 'react-router';
+import Posts from './posts/Posts';
+import PostDetails from './postDetails/PostDetails';
+import NoMatch from './NoMatch';
+import configureStore, {history} from './store/configureStore.dev';
+
+const store = configureStore();
 
 function App() {
     return (
-        <div className={classes.app}>
-            <header className={classes.appHeader}>
-                <img src={logo} className={classes.appLogo} alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className={classes.appLink}
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
+        <Provider store={store}>
+            <ConnectedRouter history={history}>
+                <div className={classes.container}>
+                    <Switch>
+                        <Route path="/posts/:postId">
+                            <PostDetails/>
+                        </Route>
+                        <Route path="/">
+                            <Posts/>
+                        </Route>
+                        <Route>
+                            <NoMatch />
+                        </Route>
+                    </Switch>
+                </div>
+            </ConnectedRouter>
+        </Provider>
     );
 }
 
